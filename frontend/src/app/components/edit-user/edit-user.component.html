@@ -1,0 +1,18 @@
+<div *ngIf='identity' class="container" style= "width: 50%;margin-left: 20%; margin-right: 20%; margin-top: 10%;">
+    <div *ngIf="errorMessage">
+        <div class="alert alert-info" role="alert">
+            {{errorMessage}}
+          </div>
+    </div>
+<form #editUserForm="ngForm"(ngSubmit)="onSubmit()" >
+    <h3 style="margin-top: 5%;">Editar tus datos</h3>
+    <label for="InputTitle" style="margin-top: 5%;">Email</label>
+    <div class="form-group">
+        <input type="email" #email= "ngModel" [(ngModel)]="user.email" class="form-control" name="email" size="20" maxlength="30" placeholder="Introduzca el email" required autofocus>
+        <span *ngIf= "!email.valid && email.touched"> El email es obligatorio</span>
+    </div>
+    <div style="margin-top: 2%;"><button type="submit" class="btn btn-primary">Guardar cambios</button></div>
+</form>
+</div>
+
+<div *ngIf='!identity'> No puedes acceder a esta parte</div>

@@ -1,0 +1,38 @@
+<div *ngIf='identity' class="container">
+    <form  class="containerForm" #FormDeForm="ngForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="alertMessage">
+            <div class="alert alert-info" role="alert">
+                {{alertMessage}}
+              </div>
+        </div>
+    <p>Respuestas de : {{question.title}}, cuya pregunta es: {{question.text}}</p>
+    <p>Correspondiente al formulario : {{question.Idform.title}}</p>
+    <p for="InputTitle">Introduce las respuestas</p>
+    <input type="text" style="margin-top: 5%;" #respuesta1="ngModel" [(ngModel)]="answer1.text" class="form-control" name="text" size="15" maxlength="30" placeholder="Introduzca la respuesta" required autofocus>
+   
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="respuestaFinal1" #respuestaFinal="ngModel" [(ngModel)]="answer1.finalQuestion" id="finalAnswer1">
+        <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <input type="text" style="margin-top: 5%;"  #respuesta2="ngModel" [(ngModel)]="answer2.text" class="form-control" name="text" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="respuestaFinal2"  #respuestaFinal2="ngModel" [(ngModel)]="answer2.finalQuestion" id="finalAnswer2">
+        <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <input type="text" style="margin-top: 5%;" #respuesta3="ngModel" [(ngModel)]="answer3.text" class="form-control" name="text" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="respuestaFinal3"  #respuestaFinal3="ngModel" [(ngModel)]="answer3.finalQuestion" id="finalAnswer3">
+        <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <input type="text" style="margin-top: 5%;" #respuesta4="ngModel" [(ngModel)]="answer4.text" class="form-control" name="text" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="respuestaFinal4"  #respuestaFinal4="ngModel" [(ngModel)]="answer4.finalQuestion" id="finalAnswer4">
+        <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+
+    <input style="margin-top: 5%" type="submit" value="Guardar respuestas" class="btn btn-primary"/>
+    </form>
+</div>
+<div *ngIf='!identity'> No puedes acceder a esta parte</div>
+    
+    

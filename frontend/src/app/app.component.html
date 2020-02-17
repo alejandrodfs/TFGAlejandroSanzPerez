@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-default">
+  <div class= "container">
+    <div class="navbar-header" style="margin-right: 30%; float: left">
+        <a class="navbar-brand" href=""> Inicio</a>
+    </div> 
+   
+    <div *ngIf="!identity" class=" nav navbar-nav navbar-right ml-auto">
+      <a class="navbar-brand" routerLink="login" style="font-size: 150%;"> Login</a>
+    </div> 
+    <div *ngIf="identity" class="nav navbar-nav  ml-auto" style="margin-right: -50%;">
+      <a class="navbar-item nav-link" [routerLink]="['register']" style="font-size: 150%;"> Registro</a>
+    </div> 
+    <div *ngIf="identity" class=" nav navbar-nav navbar-right ml-auto">
+      <a class="navbar-item nav-link active" (click)="logout()" style="font-size: 150%;"> Logout</a>
+    </div> 
+  </div>
+
+</nav>
+<router-outlet></router-outlet>

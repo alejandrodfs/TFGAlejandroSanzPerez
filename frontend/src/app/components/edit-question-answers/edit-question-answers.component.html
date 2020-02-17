@@ -1,0 +1,59 @@
+
+
+<div class="container">
+<form class="containerForm" *ngIf='identity' style="margin-top: 5%;" #FormDeForm="ngForm" (ngSubmit)="onSubmit()" >
+  <div *ngIf="alertMessage">
+    <div class="alert alert-info" role="alert">
+        {{alertMessage}}
+      </div>
+ </div>
+    <h2 style="text-align: center;">Editar pregunta</h2>
+    <label for="InputTitle">Titulo</label>
+    <input type="text" #title="ngModel" [(ngModel)]="question.title" class="form-control" name="title" size="15" maxlength="30" placeholder="Introduzca Titulo" required autofocus>
+    <label for="InputFormulario">Pregunta del Formulario</label>
+    <input type="text" class="form-control" #textquestion="ngModel" [(ngModel)]="question.text"  name="textquestion" size="15" maxlength="30" placeholder="Pregunta formulario">
+    <div *ngIf = 'question.questionBefore!="" && question.answerBefore!="" '>
+      <span>Sino desea cambiar ni la pregunta anterior ni la respuesta de la pregunta anterior, no escoja ninguna opcion </span><br>
+       <label for="exampleFormControlSelect1">Seleccion de la pregunta anterior</label>
+            <select  class="form-control" name="opcionSeleccionado" #opcionseleccionada="ngModel" [(ngModel)]="opcionSeleccionado" (change)="capturarQuestion()">
+              <option [ngValue]="question" *ngFor="let question of questions">{{question.title}}</option>
+            </select>
+            <span>La pregunta escogida anteriormente es: {{questionSelectedBefore.title}}</span><br>
+      <label for="exampleFormControlSelect2">Seleccion de la respuesta de la pregunta anterior</label>
+            <select class="form-control" id="exampleFormControlSelect2" name="opcionSeleccionado" #opcionseleccionada2="ngModel" [(ngModel)]="opcionSeleccionadoAnswer" (change)="capturarAnswer()">
+                <option [ngValue]="answer" *ngFor="let answer of answers">{{answer.text}}</option>
+            </select>
+            <span>La respuesta escogida anteriormente es: {{answerSelectedBefore.text}}</span>
+    </div>
+    <div>
+    <label for="InputTitle">Introduce las respuestas</label>
+    <input type="text" #respuesta1="ngModel" [(ngModel)]="answer1.text" class="form-control" name="text1" size="15" maxlength="30" placeholder="Introduzca la respuesta" required>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" name="respuestaFinal1"  #respuestaFinal1="ngModel" [(ngModel)]="answer1.finalQuestion" id="finalAnswer1">
+      <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <span>Numero de veces seleccionada es: {{answer1.numselect}}</span>
+    <input type="text" style="margin-top: 2%;" #respuesta2="ngModel" [(ngModel)]="answer2.text" class="form-control" name="text2" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" name="respuestaFinal2"  #respuestaFinal2="ngModel" [(ngModel)]="answer2.finalQuestion" id="finalAnswer2">
+      <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <span>Numero de veces seleccionada es: {{answer2.numselect}}</span>
+    <input type="text" style="margin-top: 2%;" #respuesta3="ngModel" [(ngModel)]="answer3.text" class="form-control" name="text3" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" name="respuestaFinal3"  #respuestaFinal3="ngModel" [(ngModel)]="answer3.finalQuestion" id="finalAnswer3">
+      <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <span>Numero de veces seleccionada es: {{answer3.numselect}}</span>
+    <input type="text" style="margin-top: 2%;" #respuesta4="ngModel" [(ngModel)]="answer4.text" class="form-control" name="text4" size="15" maxlength="30" placeholder="Introduzca la respuesta" required >
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" name="respuestaFinal4"  #respuestaFinal4="ngModel" [(ngModel)]="answer4.finalQuestion" id="finalAnswer4">
+      <label class="form-check-label" style="margin-left: 4%;" for="materialUnchecked">Respuesta final</label>
+    </div>
+    <span>Numero de veces seleccionada es: {{answer4.numselect}}</span>
+    </div>   
+    <input style="margin-top: 5%" type="submit" value="Guardar cambios" class="btn btn-primary" />
+</form>
+</div>
+
+<div *ngIf='!identity'> No puedes acceder a esta parte</div>

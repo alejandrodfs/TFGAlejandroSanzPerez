@@ -1,0 +1,27 @@
+<div class="container" *ngIf="identity" >
+    
+    <form class= "containerForm" style="margin-top: 5%;" #FormDeForm="ngForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="alertMessage">
+            <div class="alert alert-info" role="alert">
+                {{alertMessage}}
+              </div>
+        </div>
+        
+        <h2 style="margin-left: 10%;">Crear un formulario</h2>
+        <label for="InputTitle">Titulo</label>
+        <input type="text" #title="ngModel" [(ngModel)]="form.title" class="form-control" name="title" size="15" maxlength="30" placeholder="Introduzca Titulo" required autofocus>
+        
+
+        <label style="margin-top: 5%;" for="exampleFormControlSelect1">Selecciona el nivel del formulario</label>
+        <select #level="ngModel" [(ngModel)]="form.level" class="form-control" name="level" required>
+            <option selected="true">Fácil</option >
+            <option>Medio</option>
+            <option>Difícil</option>
+        </select>
+    
+        <input style="margin-top: 5%" type="submit" value="Guardar formulario" class="btn btn-primary"/>
+    </form>
+</div>
+<div *ngIf="!identity">
+    <p>No puedes acceder a esta parte</p>
+</div>

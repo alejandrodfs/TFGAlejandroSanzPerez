@@ -1,0 +1,57 @@
+
+<div class="container" *ngIf='identity'>
+  <div class="containerForm">
+<h2>Listado de preguntas del formulario: {{form.title}} </h2>
+    <div *ngIf="alertMessage">
+        <div class="alert alert-info" role="alert">
+            {{alertMessage}}
+          </div>
+    </div>
+    <div class="seguro" *ngIf="confirmado == form._id" style="margin-top: 2%">
+      <p>¿Estas seguro de elimarlo?</p>
+    </div>
+      <div *ngIf="(confirmado != form._id ) && (identity)">
+        <input style="margin-top: 5%;margin-right: 2%;" type="submit" value="Editar" [routerLink]="['/edit-form',form._id]" class="btn btn-warning" />
+        <input style="margin-top: 5%" type="submit" value="Borrar" (click)="OnDeleteConfirm(form._id)"  class="btn btn-danger" />
+      </div>
+    <div class="seguro" *ngIf="confirmado == form._id">
+        <a (click)="onDeleteForm(form._id)" class="btn btn-danger" style="margin-right: 2%;"> Eliminar </a>
+        <a (click)="onCancelForm()" class="btn btn-primary">Cancelar</a>
+    </div>
+
+<div style="margin-top: 5%" id="list-questions" *ngIf="questions">
+    <ul class="list-group list-group-horizontal-lg">
+        <li *ngFor="let question of questions" class="list-group-item">
+          <div class="title">
+            <input style="margin-top: 5%" type="submit" value="{{question.title}}" class="btn btn-primary" [routerLink]="['/show-question',question._id]"/>
+          </div>
+        </li>
+      </ul>
+</div>
+<div *ngIf='identity'>
+<input style="margin-top: 5%" type="submit" value="Añadir nueva pregunta" [routerLink]="['/create-question',form._id]" class="btn btn-primary" />
+</div>
+<ul class="pager" style="margin-top: 5%;">
+  <li class="previous"><a [routerLink]="['/show-forms',prevpage]">&larr; Anterior</a></li>
+  <li class="next"><a [routerLink]="['/show-forms',nextpage]">Siguiente &rarr;</a></li>
+</ul>
+<div *ngIf="numQuestions==0">
+    <p> No tiene preguntas este formulario</p>
+</div>
+
+</div>
+</div>
+
+<div class="container" *ngIf='!identity'>
+  <form class="containerForm" formQuestionUser="ngForm" (ngSubmit)="onSubmit()">
+  <h2>{{firstQuestion.text}}</h2>
+  <div *ngFor="let answer of answers">
+    <label for="selectedanswer">
+      <input id="answerSelected{{answer.text}}" [value]="answer.text" type="radio" name="select" [(ngModel)]="answerSelected" (change)="capture(answer)">
+      {{answer.text}}
+    </label>
+  </div>
+  <div style="margin-top: 2%;"><button type="submit" class="btn btn-primary" >Enviar</button></div>
+</form> 
+
+</div>

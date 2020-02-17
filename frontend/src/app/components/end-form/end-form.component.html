@@ -1,0 +1,14 @@
+<p>{{idQuestion}}</p>
+<p>{{idAnswer}}</p>
+<div *ngIf="!idQuestion && !idAnswer">
+<p> Enhorabuena has acabado el formulario</p>
+
+<div style="margin-top: 2%;"><button type="submit" class="btn btn-primary" [routerLink]="['/show-forms/1']">Volver al inicio</button></div>
+</div>
+<form formQuestionUser="ngForm" (ngSubmit)="onSubmit()">
+<div *ngIf="idQuestion && idAnswer ">
+    <p> Respuesta incorrecta si quieres puedes volver a la pregunta anterior</p>
+    
+    <div style="margin-top: 2%;"><button type="submit" class="btn btn-primary" >Volver a la pregunta anterior</button></div>
+</div>
+</form>

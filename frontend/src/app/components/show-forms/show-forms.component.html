@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<h1 style="text-align: center;">Formularios</h1>
+<div class="container">
+
+
+<div class="containerLevel">
+  
+  
+  <h2 style = "text-align: center;">Nivel facil</h2> 
+  
+    
+    <ul style="margin-top: 5%;" class="list-group list-group-horizontal-lg">
+      <li *ngFor="let form of formsEasy" class="list-group-item">
+        <div class="title; col-md-3">
+          <input style="margin-top: 5%" type="submit" value="{{form.title}}" class="btn btn-primary" [routerLink]="['/show-questions',form._id]"/>
+        </div>
+      </li>
+    </ul>
+  
+
+<h2 style = "text-align: center; margin-top: 5%;">Nivel medio</h2> 
+
+  
+  <ul style="margin-top: 5%;" class="list-group list-group-horizontal-lg">
+    <li *ngFor="let form of formsMedium" class="list-group-item">
+      <div class="title; col-md-3">
+        <input style="margin-top: 5%" type="submit" value="{{form.title}}" class="btn btn-primary" [routerLink]="['/show-questions',form._id]"/>
+      </div>
+    </li>
+  </ul>
+
+
+<h2 style = "text-align: center; margin-top: 5%;">Nivel dificil</h2> 
+
+  
+  <ul style="margin-top: 5%;" class="list-group list-group-horizontal-lg">
+    <li *ngFor="let form of formsHard" class="list-group-item">
+      <div class="title; col-md-3">
+        <input style="margin-top: 5%" type="submit" value="{{form.title}}" class="btn btn-primary" [routerLink]="['/show-questions',form._id]"/>
+      </div>
+    </li>
+  </ul>
+
+
+  <div *ngIf="identity" class="row" style=" margin-top: 5%;">
+    <div class="col-md-1" style=" text-align: center;"><button type="button" class="btn btn-primary" routerLink="/create-form">Añadir Formulario</button></div>
+  </div>
+
+
+<ul class="pager" style="margin-top: 5%;">
+  <li class="previous"><a [routerLink]="['/show-forms',prevpage]">&larr; Anterior</a></li>
+  <li class="next"><a [routerLink]="['/show-forms',nextpage]">Siguiente &rarr;</a></li>
+</ul>
+
+</div>
+</div>
